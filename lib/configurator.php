@@ -24,7 +24,7 @@ class Configurator
     {
         return Option::get(
             self::$moduleId,
-            'slider'
+            "slider"
         );
     }
 
@@ -40,15 +40,15 @@ class Configurator
     {
         return [
             [
-                'DIV' => 'edit1',
-                'TAB' => Loc::getMessage('OPTIONS_TAB_SETTINGS'),
-                'TITLE' => Loc::getMessage('OPTIONS_TAB_SETTINGS'),
-                'OPTIONS' => [
+                "DIV" => "edit1",
+                "TAB" => Loc::getMessage("OPTIONS_TAB_SETTINGS"),
+                "TITLE" => Loc::getMessage("OPTIONS_TAB_SETTINGS"),
+                "OPTIONS" => [
                     [
-                        'slider',
-                        Loc::getMessage('OPTIONS_SLIDER_LINK'),
+                        "slider",
+                        Loc::getMessage("OPTIONS_SLIDER_LINK"),
                         self::getSliderURI(),
-                        ['text', 40]
+                        ["text", 40]
                     ]
                 ]
             ]
@@ -63,6 +63,6 @@ class Configurator
      */
     public static function getModuleSettingsParam()
     {
-        return str_ireplace('.', '_', self::$moduleId) . '_settings';
+        return str_ireplace(".", "_", self::$moduleId) . "_settings";
     }
 }

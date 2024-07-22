@@ -60,8 +60,8 @@ class Viewer
     public static function RegisterJsLibrary()
     {
         \CJSCore::RegisterExt(self::MODULE_JS_LIBRARY, [
-            'js' => self::getModulePath(true) . '/js/elementviewslide.js',
-            'rel' => ['SidePanel']
+            "js" => self::getModulePath(true) . "/js/elementviewslide.js",
+            "rel" => ["SidePanel"]
         ]);
     }
 

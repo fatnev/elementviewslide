@@ -10,9 +10,9 @@ class EventHandler
 {
     use ElementViewSlideTrait;
 
-    private static $pattern = '/\/lists\/(\d+)\/view\//';
+    private static $pattern = "/\/lists\/(\d+)\/view\//";
 
-    const EVENT_ON_EPILOG = 'OnEpilog';
+    const EVENT_ON_EPILOG = "OnEpilog";
 
     /**
      * Обработчик события OnEpilog
@@ -36,11 +36,11 @@ class EventHandler
     public static function registerHandler(EventManager $eventManager)
     {
         $eventManager->registerEventHandler(
-            'main',
+            "main",
             self::EVENT_ON_EPILOG,
             self::$moduleId,
             __CLASS__,
-            'handleEpilog'
+            "handleEpilog"
         );
     }
 
@@ -52,11 +52,11 @@ class EventHandler
     public static function unRegisterHandler(EventManager $eventManager)
     {
         $eventManager->unRegisterEventHandler(
-            'main',
+            "main",
             self::EVENT_ON_EPILOG,
             self::$moduleId,
             __CLASS__,
-            'handleEpilog'
+            "handleEpilog"
         );
     }
 }

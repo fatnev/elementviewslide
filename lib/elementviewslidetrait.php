@@ -14,6 +14,6 @@ trait ElementVieweSlideTrait
     /**
      * @var string $moduleId ID модуля
      */
-    public static $moduleId = 'fatnev.elementviewslide';
+    public static $moduleId = "fatnev.elementviewslide";
 
 }

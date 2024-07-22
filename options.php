@@ -6,11 +6,11 @@ use Bitrix\Main\Localization\Loc;
 use Fatnev\ElementViewSlide;
 use Bitrix\Main\Context;
 
-$module_id = 'fatnev.elementviewslide';
+$module_id = "fatnev.elementviewslide";
 $request = Context::getCurrent()->getRequest();
 $server = Context::getCurrent()->getServer();
 
-Loc::loadMessages($_SERVER['DOCUMENT_ROOT'].BX_ROOT.'/modules/main/options.php');
+Loc::loadMessages($_SERVER["DOCUMENT_ROOT"].BX_ROOT."/modules/main/options.php");
 Loc::loadMessages(__FILE__);
 
 Loader::includeModule($module_id);
@@ -18,32 +18,32 @@ Loader::includeModule($module_id);
 
 $aTabs = [
     [
-        'DIV' => 'edit1',
-        'TAB' => Loc::getMessage('OPTIONS_TAB_SETTINGS'),
-        'TITLE' => Loc::getMessage('OPTIONS_TAB_SETTINGS'),
-        'OPTIONS' => [
+        "DIV" => "edit1",
+        "TAB" => Loc::getMessage("OPTIONS_TAB_SETTINGS"),
+        "TITLE" => Loc::getMessage("OPTIONS_TAB_SETTINGS"),
+        "OPTIONS" => [
             [
-                'slider',
-                Loc::getMessage('OPTIONS_SLIDER_LINK'),
+                "slider",
+                Loc::getMessage("OPTIONS_SLIDER_LINK"),
                 ElementViewSlide\Configurator::getSliderURI(),
-                ['text', 40]
+                ["text", 40]
             ]
         ]
     ]
 ];
 
-if ($request->isPost() && $request['Update'] && check_bitrix_sessid())
+if ($request->isPost() && $request["Update"] && check_bitrix_sessid())
 {
 
     foreach ($aTabs as $aTab)
     {
         //Или можно использовать __AdmSettingsSaveOptions($MODULE_ID, $arOptions);
-        foreach ($aTab['OPTIONS'] as $arOption)
+        foreach ($aTab["OPTIONS"] as $arOption)
         {
             if (!is_array($arOption)) //Строка с подсветкой. Используется для разделения настроек в одной вкладке
                 continue;
 
-            if ($arOption['note']) //Уведомление с подсветкой
+            if ($arOption["note"]) //Уведомление с подсветкой
                 continue;
 
 
@@ -57,22 +57,22 @@ if ($request->isPost() && $request['Update'] && check_bitrix_sessid())
     }
 }
 
-$tabControl = new CAdminTabControl('tabControl', $aTabs);
+$tabControl = new CAdminTabControl("tabControl", $aTabs);
 
 $tabControl->Begin();
 
 ?>
 
-<form action="<?=$request->getRequestedPage()?>?mid=<?=htmlspecialcharsbx($request['mid'])
-?>&lang=<?=$request['lang']?>" method="POST" name="<?=ElementViewSlide\Configurator::getModuleSettingsParam()?>">
+<form action="<?=$request->getRequestedPage()?>?mid=<?=htmlspecialcharsbx($request["mid"])
+?>&lang=<?=$request["lang"]?>" method="POST" name="<?=ElementViewSlide\Configurator::getModuleSettingsParam()?>">
 
     <?php
 
     foreach ($aTabs as $tab) {
 
-        if($tab['OPTIONS']) {
+        if($tab["OPTIONS"]) {
             $tabControl->BeginNextTab();
-            __AdmSettingsDrawList($module_id, $tab['OPTIONS']);
+            __AdmSettingsDrawList($module_id, $tab["OPTIONS"]);
         }
 
     }
@@ -83,8 +83,8 @@ $tabControl->Begin();
 
     ?>
 
-    <input type="submit" name="Update" value="<?=Loc::getMessage('MAIN_SAVE')?>">
-    <input type="reset" name="reset" value="<?=Loc::getMessage('MAIN_RESET')?>">
+    <input type="submit" name="Update" value="<?=Loc::getMessage("MAIN_SAVE")?>">
+    <input type="reset" name="reset" value="<?=Loc::getMessage("MAIN_RESET")?>">
     <?=bitrix_sessid_post();?>
 
 </form>

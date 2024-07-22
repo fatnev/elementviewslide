@@ -19,17 +19,17 @@ class fatnev_elementviewslide extends CModule
     {
         $this->eventManager = EventManager::getInstance();
 
-        $this->MODULE_ID = 'fatnev.elementviewslide';
+        $this->MODULE_ID = "fatnev.elementviewslide";
 
-        $this->MODULE_NAME = Loc::getMessage('MODULE_NAME');
-        $this->PARTNER_NAME = Loc::getMessage('PARTNER_NAME');
-        $this->PARTNER_URI = Loc::getMessage('PARTNER_URI');
+        $this->MODULE_NAME = Loc::getMessage("MODULE_NAME");
+        $this->PARTNER_NAME = Loc::getMessage("PARTNER_NAME");
+        $this->PARTNER_URI = Loc::getMessage("PARTNER_URI");
     }
 
     function DoInstall()
     {
         if(!$this->isD7()) {
-            throw new \Exception('Kernel version is not support D7 technology. Please, update website core');
+            throw new \Exception("Kernel version is not support D7 technology. Please, update website core");
         }
 
         ModuleManager::registerModule($this->MODULE_ID);
@@ -49,7 +49,7 @@ class fatnev_elementviewslide extends CModule
 
     function isD7()
     {
-        return CheckVersion(ModuleManager::getVersion('main'), '14.00.00');
+        return CheckVersion(ModuleManager::getVersion("main"), "14.00.00");
     }
 
     function InstallDB()
@@ -57,8 +57,8 @@ class fatnev_elementviewslide extends CModule
         Loader::includeModule($this->MODULE_ID);
         Option::set(
             $this->MODULE_ID,
-            'slider',
-            Ramapriya\ElementViewer\Viewer::getModulePath(true) .'/slider/'
+            "slider",
+            Ramapriya\ElementViewer\Viewer::getModulePath(true) ."/slider/"
         );
     }
 

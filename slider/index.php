@@ -12,15 +12,15 @@ require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $request = Bitrix\Main\Context::getCurrent()->getRequest();
 
 
-if($request['IFRAME'] === 'Y') {
+if($request["IFRAME"] === "Y") {
 
     $APPLICATION->RestartBuffer();
     $APPLICATION->ShowHead();
 
-    if($request['element_id'] && $request['list_id']) {
+    if($request["element_id"] && $request["list_id"]) {
 
-        $listId = $request['list_id'];
-        $elementId = $request['element_id'];
+        $listId = $request["list_id"];
+        $elementId = $request["element_id"];
 
         $Iblock = IblockTable::getById($listId)->fetchObject();
         $listName = $Iblock->getName();
@@ -31,8 +31,8 @@ if($request['IFRAME'] === 'Y') {
             $detailText = $element->getDetailText();
         }
 
-        if($request['section_id']) {
-            $sectionId = $request['section_id'];
+        if($request["section_id"]) {
+            $sectionId = $request["section_id"];
             $section = SectionTable::getById($sectionId)->fetchObject();
             $sectionName = $section->getName();
         }
